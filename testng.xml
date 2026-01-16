@@ -4,7 +4,7 @@
 <suite name="RedBusSuite">
     <test name="OrderedExecution">
         <classes>
-            <class name="practices.redbus">
+             <class name="com.redbus.test.redbus">
                 <methods>
                     <include name="TrainSerach"/>
                     <include name="FreeCancelCharge"/>
