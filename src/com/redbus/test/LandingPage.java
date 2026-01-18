@@ -21,7 +21,7 @@ public class LandingPage extends AbstractComponents  {
 
 	}
 	 	
-    public void TrainSearch(String from, String to ) { 
+    public void searchTrains(String from, String to ) { 
     		
     		WebElement fromBtn =  driver.findElement(By.xpath( "//div[contains(@class,'label_')]"));
     		fromBtn.click();
@@ -41,7 +41,7 @@ public class LandingPage extends AbstractComponents  {
     		toSelect.click();
     				}
     
-    public void Calender(String targetMonth, String targetDay) {
+    public void selectDate(String targetMonth, String targetDay) {
 
         By monthLocator = By.xpath("//p[contains(@class,'monthYear')]");
         By arrowLocator = By.xpath("//i[contains(@class,'icon-arrow')][2]");
@@ -58,7 +58,7 @@ public class LandingPage extends AbstractComponents  {
         driver.findElement(dateLocator).click();
     }
     
-    public SearchResultsPage FreeCancelCharge(String option) {
+    public SearchResultsPage applyFreeCancellationAndSearch(String option) {
 
         WebElement cancelBtn = driver.findElement(By.id("switch"));
         WebElement searchBtn = driver.findElement(

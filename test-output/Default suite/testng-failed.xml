@@ -3,15 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="practices.redbus">
+      <class name="com.redbus.test.E2E_Test">
         <methods>
+          <include name="redBusEndToEndTest"/>
+          <include name="launchApplication"/>
           <include name="AfterExecu"/>
-          <include name="TrainClass"/>
-          <include name="setUp"/>
-          <include name="TrainSerach"/>
-          <include name="FreeCancelCharge"/>
         </methods>
-      </class> <!-- practices.redbus -->
+      </class> <!-- com.redbus.test.E2E_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

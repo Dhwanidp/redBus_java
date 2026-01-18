@@ -5,8 +5,8 @@
     <classes>
       <class name="com.redbus.test.E2E_Test">
         <methods>
-          <include name="setUp"/>
           <include name="redBusEndToEndTest"/>
+          <include name="launchApplication"/>
           <include name="AfterExecu"/>
         </methods>
       </class> <!-- com.redbus.test.E2E_Test -->
