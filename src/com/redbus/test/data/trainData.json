@@ -1,0 +1,27 @@
+[
+  {
+    "from": "Delhi",
+    "to": "Pune",
+    "month": "February 2026",
+    "day": "25",
+    "freeCancel": "Yes",
+    "class": "SL"
+  },
+  {
+    "from": "Mumbai",
+    "to": "Goa",
+    "month": "March 2026",
+    "day": "18",
+    "freeCancel": "No",
+    "class": "3A"
+  },
+  {
+    "from": "Chennai",
+    "to": "Bangalore",
+    "month": "February 2026",
+    "day": "20",
+    "freeCancel": "Yes",
+    "class": "2A"
+  }
+  ]
+

@@ -23,8 +23,8 @@ public class LandingPage extends AbstractComponents  {
 	 	
     public void searchTrains(String from, String to ) { 
     		
-    		WebElement fromBtn =  driver.findElement(By.xpath( "//div[contains(@class,'label_')]"));
-    		fromBtn.click();
+        	WebElement fromBtn = waitForElementToAppear(By.xpath("//div[contains(@class,'label_')]"));
+        	fromBtn.click();
     		
     		WebElement input = driver.switchTo().activeElement();
     		input.sendKeys(from);

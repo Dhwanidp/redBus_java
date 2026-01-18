@@ -4,6 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,9 +20,9 @@ public class AbstractComponents {
 	        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
-	public void waitForElementToAppear(By locator) {
+	public WebElement waitForElementToAppear(By locator) {
 		
-	    wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	    return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 
 	public void presenceOfAllElementsLocated(By locator) {
@@ -29,18 +30,28 @@ public class AbstractComponents {
 		wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	}
 	
-	public void refreshedToBeClickable(By locator) {
-		
-		wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(locator)));
-		
+	public WebElement refreshedToBeClickable(By locator) {
+	    return wait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(locator)));
 	}
 	public void ToBeClickable(By locator) {
 		
 		wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
-	
-	
+	public void refreshedVisibilityOfAllElements(By locator) {
+		
+	    wait.until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator)));
+	}
+
+	public boolean isElementPresent(By locator, int timeoutSeconds) {
+	    try {
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	        return true;
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
 	
 	
 }

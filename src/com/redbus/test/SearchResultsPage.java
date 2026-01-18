@@ -28,25 +28,35 @@ public class SearchResultsPage extends AbstractComponents  {
 		    classButton.click();
      	     	
      		By classHeader = By.xpath("//div[contains(@class,'listHeader') and contains(normalize-space(),'" + classType + "')]");
-     		refreshedToBeClickable(classHeader);
+     		refreshedToBeClickable(classHeader).click();
      		
-     		WebElement classElement = driver.findElement(classHeader);
-			classElement.click();			
-			
 			By classLocator = By.xpath("//div[contains(@class,'listHeader')]");
 			presenceOfAllElementsLocated(classLocator);
 			
 			By trainClassLocator = By.xpath("//span[contains(@class,'journeyClass')]");
+			refreshedVisibilityOfAllElements(trainClassLocator);
+
+			List<WebElement> elements = driver.findElements(trainClassLocator);
+
 			List<String> trainClasses = new ArrayList<>();
-			int count = driver.findElements(trainClassLocator).size();
-			for (int i = 0; i < count; i++) {
-	        String classOfTrain = driver.findElements(trainClassLocator).get(i).getText();
-	        trainClasses.add(classOfTrain);
+
+			for (WebElement el : elements) {
+				
+				trainClasses.add(el.getText());
+			
 				}
 			
 			Assert.assertTrue(trainClasses.contains(classType));
      }
 	
-	
+		public void verifyErrorMessageIfPresent() {
+
+		    By errorMsg = By.xpath("//*[contains(text(),'Something went wrong')]");
+
+		    if (isElementPresent(errorMsg, 7)) {
+		        Assert.fail("Search failed: 'Something went wrong' message displayed");
+		    }
+		}
+
 	
 }

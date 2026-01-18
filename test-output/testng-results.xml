@@ -1,21 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="3" passed="3" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-01-18T18:45:18 IST" name="RedBusSuite" finished-at="2026-01-18T18:45:28 IST" duration-ms="10470">
+  <suite started-at="2026-01-18T23:37:33 IST" name="RedBusSuite" finished-at="2026-01-18T23:38:21 IST" duration-ms="47587">
     <groups>
     </groups>
-    <test started-at="2026-01-18T18:45:18 IST" name="E2E Test Execution" finished-at="2026-01-18T18:45:28 IST" duration-ms="10470">
+    <test started-at="2026-01-18T23:37:33 IST" name="E2E Test Execution" finished-at="2026-01-18T23:38:21 IST" duration-ms="47587">
       <class name="com.redbus.test.E2E_Test">
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.redbus.test.E2E_Test@62379589]" started-at="2026-01-18T18:45:16 IST" name="setUp" finished-at="2026-01-18T18:45:18 IST" duration-ms="2204" status="PASS">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:37:33 IST" name="setUp" finished-at="2026-01-18T23:37:35 IST" duration-ms="1864" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="redBusEndToEndTest()[pri:0, instance:com.redbus.test.E2E_Test@62379589]" started-at="2026-01-18T18:45:18 IST" name="redBusEndToEndTest" finished-at="2026-01-18T18:45:28 IST" duration-ms="10338" status="PASS">
+        <test-method signature="redBusEndToEndTest(java.util.HashMap)[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:37:35 IST" name="redBusEndToEndTest" data-provider="getData" finished-at="2026-01-18T23:37:49 IST" duration-ms="13831" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{freeCancel=Yes, month=February 2026, from=Delhi, to=Pune, day=25, class=SL}]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- redBusEndToEndTest -->
-        <test-method is-config="true" signature="AfterExecu()[pri:0, instance:com.redbus.test.E2E_Test@62379589]" started-at="2026-01-18T18:45:29 IST" name="AfterExecu" finished-at="2026-01-18T18:45:30 IST" duration-ms="1201" status="PASS">
+        <test-method is-config="true" signature="AfterExecu()[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:37:49 IST" name="AfterExecu" finished-at="2026-01-18T23:37:49 IST" duration-ms="466" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterExecu -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:37:49 IST" name="setUp" finished-at="2026-01-18T23:37:51 IST" duration-ms="1423" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="redBusEndToEndTest(java.util.HashMap)[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:37:51 IST" name="redBusEndToEndTest" data-provider="getData" finished-at="2026-01-18T23:38:05 IST" duration-ms="13951" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{freeCancel=No, month=March 2026, from=Mumbai, to=Goa, day=18, class=3A}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- redBusEndToEndTest -->
+        <test-method is-config="true" signature="AfterExecu()[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:38:05 IST" name="AfterExecu" finished-at="2026-01-18T23:38:05 IST" duration-ms="455" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterExecu -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:38:05 IST" name="setUp" finished-at="2026-01-18T23:38:07 IST" duration-ms="1442" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="redBusEndToEndTest(java.util.HashMap)[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:38:07 IST" name="redBusEndToEndTest" data-provider="getData" finished-at="2026-01-18T23:38:20 IST" duration-ms="13461" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[{freeCancel=Yes, month=February 2026, from=Chennai, to=Bangalore, day=20, class=2A}]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- redBusEndToEndTest -->
+        <test-method is-config="true" signature="AfterExecu()[pri:0, instance:com.redbus.test.E2E_Test@78691363]" started-at="2026-01-18T23:38:20 IST" name="AfterExecu" finished-at="2026-01-18T23:38:21 IST" duration-ms="371" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AfterExecu -->
