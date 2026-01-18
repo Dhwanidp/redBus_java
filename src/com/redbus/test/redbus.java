@@ -29,7 +29,7 @@ public class redbus {
     }
     
     @Test
-    public void TrainSerach() {
+    public void TrainSearch() {
     		
     		String from = "Delhi";
     		String to = "Pune";

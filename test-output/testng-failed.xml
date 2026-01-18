@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Default test(failed)">
+<suite name="Failed suite [RedBusSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="E2E Test Execution(failed)">
     <classes>
-      <class name="practices.redbus">
+      <class name="com.redbus.test.E2E_Test">
         <methods>
-          <include name="AfterExecu"/>
-          <include name="TrainClass"/>
           <include name="setUp"/>
-          <include name="TrainSerach"/>
-          <include name="FreeCancelCharge"/>
+          <include name="redBusEndToEndTest"/>
+          <include name="AfterExecu"/>
         </methods>
-      </class> <!-- practices.redbus -->
+      </class> <!-- com.redbus.test.E2E_Test -->
     </classes>
-  </test> <!-- Default test(failed) -->
-</suite> <!-- Failed suite [Default suite] -->
+  </test> <!-- E2E Test Execution(failed) -->
+</suite> <!-- Failed suite [RedBusSuite] -->
