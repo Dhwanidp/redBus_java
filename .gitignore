@@ -1,0 +1,20 @@
+# Maven build output
+target/
+
+# TestNG output
+test-output/
+
+# ExtentReports
+reports/
+*.html
+
+# Compiled Java files
+*.class
+
+# Eclipse / IDE files
+.settings/
+.project
+.classpath
+
+# Logs
+*.log
