@@ -169,8 +169,11 @@
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite name=&quot;RedBusSuite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
-  &lt;test thread-count=&quot;5&quot; name=&quot;E2E Test Execution&quot;&gt;
+&lt;suite parallel=&quot;tests&quot; name=&quot;RedBusSuite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;listeners&gt;
+    &lt;listener class-name=&quot;com.redbus.test.TestComponents.Listeners&quot;/&gt;
+  &lt;/listeners&gt;
+  &lt;test thread-count=&quot;5&quot; parallel=&quot;tests&quot; name=&quot;E2E Test Execution&quot;&gt;
     &lt;classes&gt;
       &lt;class name=&quot;com.redbus.test.E2E_Test&quot;/&gt;
     &lt;/classes&gt;
@@ -216,20 +219,20 @@ data.addRows(3);
 data.setCell(0, 0, 0)
 data.setCell(0, 1, 'redBusEndToEndTest')
 data.setCell(0, 2, 'com.redbus.test.E2E_Test')
-data.setCell(0, 3, 13951);
+data.setCell(0, 3, 8837);
 data.setCell(1, 0, 1)
 data.setCell(1, 1, 'redBusEndToEndTest')
 data.setCell(1, 2, 'com.redbus.test.E2E_Test')
-data.setCell(1, 3, 13831);
+data.setCell(1, 3, 8821);
 data.setCell(2, 0, 2)
 data.setCell(2, 1, 'redBusEndToEndTest')
 data.setCell(2, 2, 'com.redbus.test.E2E_Test')
-data.setCell(2, 3, 13461);
+data.setCell(2, 3, 8746);
 window.suiteTableData['RedBusSuite']= { tableData: data, tableDiv: 'times-div-RedBusSuite'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 41 seconds</span>
+              <span class="suite-total-time">Total running time: 32 seconds</span>
               <div id="times-div-RedBusSuite">
               </div> <!-- times-div-RedBusSuite -->
             </div> <!-- times-div -->
@@ -262,35 +265,35 @@ return data;
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">redBusEndToEndTest({freeCancel=Yes, month=February 2026, from=Delhi, to=Pune, day=25, class=SL})</span>
-                <span class="method-start">1865 ms</span>
+                <span class="method-start">1824 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">AfterExecu</span>
-                <span class="method-start">15703 ms</span>
+                <span class="method-start">10657 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">16170 ms</span>
+                <span class="method-start">11036 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">redBusEndToEndTest({freeCancel=No, month=March 2026, from=Mumbai, to=Goa, day=18, class=3A})</span>
-                <span class="method-start">17593 ms</span>
+                <span class="method-start">12241 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">AfterExecu</span>
-                <span class="method-start">31545 ms</span>
+                <span class="method-start">21080 ms</span>
               </div> <!-- configuration-method after -->
               <div class="configuration-method before">
                 <span class="method-name">setUp</span>
-                <span class="method-start">32001 ms</span>
+                <span class="method-start">21404 ms</span>
               </div> <!-- configuration-method before -->
               <div class="test-method">
                 <span class="method-name">redBusEndToEndTest({freeCancel=Yes, month=February 2026, from=Chennai, to=Bangalore, day=20, class=2A})</span>
-                <span class="method-start">33443 ms</span>
+                <span class="method-start">22681 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-method after">
                 <span class="method-name">AfterExecu</span>
-                <span class="method-start">46906 ms</span>
+                <span class="method-start">31428 ms</span>
               </div> <!-- configuration-method after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

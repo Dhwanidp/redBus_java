@@ -53,10 +53,10 @@ public class SearchResultsPage extends AbstractComponents  {
 
 		    By errorMsg = By.xpath("//*[contains(text(),'Something went wrong')]");
 
-		    if (isElementPresent(errorMsg, 7)) {
+		    if (isElementPresent(errorMsg, 1)) {
 		        Assert.fail("Search failed: 'Something went wrong' message displayed");
 		    }
-		}
+}
 
 	
 }

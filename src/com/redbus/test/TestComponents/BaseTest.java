@@ -14,12 +14,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import com.aventstack.extentreports.ExtentReports;
 import com.redbus.test.LandingPage;
 
 public class BaseTest {
 
-	   WebDriver driver;
-	   
+	  public WebDriver driver;
+	   ExtentReports extent;
+	   	   
 	   @BeforeMethod
 	    public WebDriver setUp() throws IOException {
 	    	
@@ -57,19 +59,24 @@ public class BaseTest {
 
 	    }
 	    
-	    public File getScreenshot(String testCaseName) throws IOException {
+	    public static String getScreenshot(String testCaseName, WebDriver driver) throws IOException {
 	    	
 	    	TakesScreenshot ss = (TakesScreenshot)driver;
 	    	File source = ss.getScreenshotAs(OutputType.FILE);
 	    	File file = new File(System.getProperty("user.dir")+"//reports//" + testCaseName + ".png");
 	    	FileUtils.copyFile(source, file);
-	    	return file;
+	    	return System.getProperty("user.dir")+"//reports//" + testCaseName + ".png";
 	    }
+	    
+	   
 	    
 	    @AfterMethod
 	    public void AfterExecu() {
 	    		driver.quit();
 			}
+	    
+	    	    
+
 		}
 
 	

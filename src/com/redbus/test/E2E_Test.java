@@ -7,16 +7,17 @@ import java.util.List;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.aventstack.extentreports.ExtentReports;
 import com.redbus.test.TestComponents.BaseTest;
 import com.redbus.test.data.DataReader;
 
 
 public class E2E_Test extends BaseTest{
-    
+
     @Test(dataProvider = "getData")
     public void redBusEndToEndTest(HashMap<String, String> input) throws IOException {
-        LandingPage landingPage = launchApplication();
 
+        LandingPage landingPage = launchApplication();
         landingPage.searchTrains(input.get("from"), input.get("to"));
         landingPage.selectDate(input.get("month"), input.get("day"));
         SearchResultsPage resultsPage = landingPage.applyFreeCancellationAndSearch(input.get("freeCancel"));
