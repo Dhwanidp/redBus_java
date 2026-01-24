@@ -3,11 +3,8 @@ package com.redbus.test;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-
-import com.aventstack.extentreports.ExtentReports;
 import com.redbus.test.TestComponents.BaseTest;
 import com.redbus.test.data.DataReader;
 
