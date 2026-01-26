@@ -58,21 +58,24 @@ public class LandingPage extends AbstractComponents  {
         driver.findElement(dateLocator).click();
     }
     
-    public SearchResultsPage applyFreeCancellationAndSearch(String option) {
+    public void applyFreeCancellationFilter(String option) {
 
         WebElement cancelBtn = driver.findElement(By.id("switch"));
-        WebElement searchBtn = driver.findElement(
-            By.xpath("//button[contains(@class, 'searchButtonWrapper')]")
-        );
 
         if (option.equalsIgnoreCase("Yes")) {
             cancelBtn.click();
         }
+    }
+
+	
+    public SearchResultsPage clickSearch() {
+
+        WebElement searchBtn = driver.findElement(
+            By.xpath("//button[contains(@class, 'searchButtonWrapper')]")
+        );
 
         searchBtn.click();
         return new SearchResultsPage(driver);
-
     }
-	
-	
+
 }

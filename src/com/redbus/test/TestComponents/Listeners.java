@@ -16,8 +16,8 @@ public class Listeners implements ITestListener {
 
     ExtentTest test;
     ExtentReports extent = ExtentReportsNG.htmlreport();
-    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
-    
+    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+
     @Override
     public void onTestStart(ITestResult result) {
         test = extent.createTest(result.getMethod().getMethodName());
@@ -26,13 +26,17 @@ public class Listeners implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-    	extentTest.get().log(Status.PASS, "Test Passed");
+        if (extentTest.get() != null) {
+            extentTest.get().log(Status.PASS, "Test Passed");
+        }
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
 
-        extentTest.get().fail(result.getThrowable());
+        if (extentTest.get() != null) {
+            extentTest.get().fail(result.getThrowable());
+        }
 
         WebDriver driver = null;
         try {
@@ -47,7 +51,11 @@ public class Listeners implements ITestListener {
         try {
             String filePath = BaseTest.getScreenshot(
                     result.getMethod().getMethodName(), driver);
-            extentTest.get().addScreenCaptureFromPath(filePath);
+
+            if (filePath != null && extentTest.get() != null) {
+                extentTest.get().addScreenCaptureFromPath(filePath);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="RedBus Full Suite">
-
+<suite name="RedBus Regression Error Suite">
     <listeners>
         <listener class-name="com.redbus.test.TestComponents.Listeners"/>
     </listeners>
 
-    <test name="All Tests Execution">
+    <test name="Regression Error Tests">
+        <groups>
+            <run>
+                <include name="regression_error"/>
+            </run>
+        </groups>
+
         <classes>
             <class name="com.redbus.test.E2E_Test"/>
         </classes>
     </test>
-
 </suite>

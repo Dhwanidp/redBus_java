@@ -9,20 +9,57 @@ import com.redbus.test.TestComponents.BaseTest;
 import com.redbus.test.data.DataReader;
 
 
-public class E2E_Test extends BaseTest{
+public class E2E_Test extends BaseTest {
 
-    @Test(dataProvider = "getData")
-    public void redBusEndToEndTest(HashMap<String, String> input) throws IOException {
+    @Test(dataProvider = "getData", groups = {"smoke", "regression_core"})
+    public void redBusBasicSearchTest(HashMap<String, String> input) throws IOException {
 
         LandingPage landingPage = launchApplication();
+
         landingPage.searchTrains(input.get("from"), input.get("to"));
         landingPage.selectDate(input.get("month"), input.get("day"));
-        SearchResultsPage resultsPage = landingPage.applyFreeCancellationAndSearch(input.get("freeCancel"));
-        resultsPage.verifyErrorMessageIfPresent();
-        resultsPage.TrainClass(input.get("class"));
+
+        SearchResultsPage resultsPage = landingPage.clickSearch();
+        resultsPage.verifyResultsDisplayed();
     }
-   
-    
+
+    @Test(dataProvider = "getData", groups = "regression_filter")
+    public void verifyFreeCancellationFilter(HashMap<String, String> input) throws IOException {
+
+        LandingPage landingPage = launchApplication();
+
+        landingPage.searchTrains(input.get("from"), input.get("to"));
+        landingPage.selectDate(input.get("month"), input.get("day"));
+
+        landingPage.applyFreeCancellationFilter(input.get("freeCancel"));
+        SearchResultsPage resultsPage = landingPage.clickSearch();
+
+        resultsPage.verifyResultsDisplayed();
+    }
+
+    @Test(dataProvider = "getData", groups = "regression_filter")
+    public void verifyTrainClassFilter(HashMap<String, String> input) throws IOException {
+
+        LandingPage landingPage = launchApplication();
+
+        landingPage.searchTrains(input.get("from"), input.get("to"));
+        landingPage.selectDate(input.get("month"), input.get("day"));
+
+        SearchResultsPage resultsPage = landingPage.clickSearch();
+        resultsPage.verifyTrainClassFilter(input.get("class"));
+    }
+
+    @Test(dataProvider = "getData", groups = "regression_error")
+    public void verifyErrorMessage(HashMap<String, String> input) throws IOException {
+
+        LandingPage landingPage = launchApplication();
+
+        landingPage.searchTrains(input.get("from"), input.get("to"));
+        landingPage.selectDate(input.get("month"), input.get("day"));
+
+        SearchResultsPage resultsPage = landingPage.clickSearch();
+        resultsPage.verifyErrorMessageIfPresent();
+    }
     
     @DataProvider
     public Object[][] getData() throws IOException {

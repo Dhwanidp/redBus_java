@@ -20,16 +20,41 @@ public class SearchResultsPage extends AbstractComponents  {
 		}
 	
 	
-	 public void TrainClass(String classType) {
+	private By trainCards = By.xpath("//div[contains(@class,'trainDetails')]");
+    private By journeyClass = By.xpath("//span[contains(@class,'journeyClass')]");
 
+    public void waitForResultsToLoad() {
+    	presenceOfAllElementsLocated(trainCards);
+        refreshedVisibilityOfAllElements(journeyClass);
+    }
+
+    public void waitForResultsAfterFilter() {
+        refreshedVisibilityOfAllElements(journeyClass);
+    }
+			
+	public void verifyResultsDisplayed() {
+
+	    By trainResultCard = By.xpath("//div[contains(@class,'trainDetails')]");
+
+	    Assert.assertTrue(isElementPresent(trainResultCard, 5),
+	        "Train search results are not displayed"
+	    );
+	}
+	
+	 public void verifyTrainClassFilter(String classType) {
+		 
+		    waitForResultsToLoad();	     
+		   
 		 	By classButtonLocator = (By.xpath("//div[@id='1']//div[@role='button']"));
 		    ToBeClickable(classButtonLocator);
 		    WebElement classButton = driver.findElement(classButtonLocator);
 		    classButton.click();
-     	     	
+     	    		    
      		By classHeader = By.xpath("//div[contains(@class,'listHeader') and contains(normalize-space(),'" + classType + "')]");
      		refreshedToBeClickable(classHeader).click();
      		
+		    waitForResultsAfterFilter();
+
 			By classLocator = By.xpath("//div[contains(@class,'listHeader')]");
 			presenceOfAllElementsLocated(classLocator);
 			
