@@ -1,8 +1,9 @@
 # 🚆 RedBus Train Search Automation Framework (Java + Selenium + TestNG)
 
-This project is an **end-to-end Selenium automation framework** built in **Java** to test the **RedBus Train Search module**. It follows **industry-standard automation practices** such as **Page Object Model (POM)**, **data-driven testing**, and **configurable browser execution**.
+This project is an **end-to-end Selenium automation framework** built in **Java** to automate and validate the **RedBus Train Search module**.  
+It follows **industry-standard automation practices** such as **Page Object Model (POM)**, **Object Library (OL)**, **JSON-driven testing**, **TestNG grouping**, and **suite-based execution**.
 
-The framework is designed to be **scalable, maintainable, and interview-ready**, showcasing real-world automation skills.
+The framework is designed to be **scalable, maintainable, and interview-ready**, reflecting real-world automation framework design.
 
 ---
 
@@ -10,49 +11,89 @@ The framework is designed to be **scalable, maintainable, and interview-ready**,
 
 To automate and validate the **RedBus Train booking search flow**, ensuring:
 
-* ✔ Correct train search results
-* ✔ Accurate filtering (e.g., Sleeper, AC classes)
-* ✔ Stable behavior after UI refresh and DOM updates
-* ✔ Reliable validations using assertions
+* ✔ Correct train search results  
+* ✔ Accurate filtering (Sleeper, AC classes, etc.)  
+* ✔ Stable behavior after UI refresh and DOM updates  
+* ✔ Reliable validations using assertions  
+* ✔ Controlled execution using TestNG groups and suites  
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category        | Tools                   |
-| --------------- | ----------------------- |
-| Language        | Java 17                 |
-| Automation      | Selenium WebDriver      |
-| Test Framework  | TestNG                  |
-| Design Pattern  | Page Object Model (POM) |
-| Build Tool      | Maven                   |
-| Test Data       | JSON                    |
-| Browser Support | Chrome, Edge, Firefox   |
+| Category        | Tools                          |
+| --------------- | ------------------------------ |
+| Language        | Java 17                        |
+| Automation      | Selenium WebDriver             |
+| Test Framework  | TestNG                         |
+| Design Pattern  | Page Object Model (POM)        |
+| Locator Design  | Object Library (OL)            |
+| Build Tool      | Maven                          |
+| Test Data       | JSON                           |
+| Reporting       | Extent Reports (HTML)          |
+| Browser Support | Chrome, Edge, Firefox          |
 
 ---
 
 ## 🌐 Supported Browsers
 
-The test framework supports execution on:
+The framework supports execution on:
 
-* Chrome
-* Edge
+* Chrome  
+* Edge  
 * Firefox
 
-Browser can be selected using **GlobalData.properties**:
-
-```
 browser=Chrome
-```
+
+
+---
+
+## ⚙️ Test Execution Strategy (Suites + Groups)
+
+The framework uses **TestNG Groups** combined with **multiple TestNG XML suites** for flexible execution.
+
+### 🔹 TestNG Groups Used
+
+* `smoke` – Critical sanity scenarios  
+* `regression` – Full regression flow  
+* `filter` – Filter-specific validations  
+* `error` – Error and negative flow validations  
+
+Groups are assigned at test method level and can be included or excluded via suite XML files.
+
+---
+
+## 📄 TestNG Suite Files
+
+The following TestNG XML files control grouped execution:
+
+* `testng.xml`  
+* `testng-smoke.xml`  
+* `testng-regression-core.xml`  
+* `testng-regression-filter.xml`  
+* `testng-regression-error.xml`  
+
+This setup enables running **specific test categories** without changing test code.
+
+---
+
+## 📚 Object Library (OL)
+
+An **Object Library (OL)** is implemented to centralize element locators:
+
+* All UI locators are maintained separately  
+* Eliminates locator duplication  
+* Simplifies updates when UI changes  
+* Improves readability and scalability  
 
 ---
 
 ## 📸 Reporting & Failure Handling
 
-* 📊 **Extent HTML Reports integrated with TestNG**
-* 📷 **Automatic screenshot capture on test failure**
-* 📄 Test execution status logged in reports
-* 🧠 Synchronization handled using **explicit waits** to avoid flaky tests
+* 📊 **Extent HTML Reports integrated with TestNG**  
+* 📷 **Automatic screenshot capture on test failure**  
+* 📄 Execution status logged in reports  
+* 🧠 Explicit waits used for stable synchronization  
 
 ---
 
@@ -60,112 +101,119 @@ browser=Chrome
 
 ### 1️⃣ JSON-Driven Train Search
 
-Reads train search data from `trainData.json`:
+Reads data from `trainData.json`:
 
-* Loads source station from JSON
-* Loads destination station from JSON
-* Loads journey month and date from JSON
-* Handles auto-suggestions and selects valid stations dynamically
+* Source station  
+* Destination station  
+* Journey month and date  
+* Auto-suggestion handling  
 
 ---
 
 ### 2️⃣ Free Cancellation Handling
 
-Uses JSON-driven values to:
-
-* Apply free cancellation toggle (Yes / No)
-* Validate correct application of the filter
-* Ensure search flow adapts based on cancellation option
+* Applies free cancellation toggle (Yes / No)  
+* Validates filter behavior  
+* Ensures correct search flow  
 
 ---
 
 ### 3️⃣ Search Results & Journey Class Validation
 
-* Applies journey class filters (SL, 2A, 3A, CC, etc.)
-* Ensures results refresh correctly after filter application
-* Collects displayed journey classes dynamically
-* Validates filtered results match expected class
+* Applies journey class filters (SL, 2A, 3A, CC, etc.)  
+* Ensures results refresh correctly  
+* Collects journey classes dynamically  
+* Validates results against expected values  
 
 ---
 
 ### 4️⃣ Calendar & Date Selection
 
-* Handles dynamic date picker
-* Navigates across months when required
-* Selects JSON-driven journey date reliably
+* Handles dynamic date picker  
+* Navigates across months  
+* Selects JSON-driven journey date  
 
 ---
 
 ### 5️⃣ Error State Validation
 
-* Detects application-level error messages such as:
-
-  * "Something went wrong"
-* Fails tests gracefully with meaningful assertions
-* Prevents misleading Selenium element failures
+* Detects application-level errors such as:  
+  * "Something went wrong"  
+* Fails tests gracefully using assertions  
+* Prevents false Selenium failures  
 
 ---
 
-### 6️⃣ Framework Structure (POM + TestNG)
+### 6️⃣ Framework Structure (POM + OL + TestNG Groups)
 
-* Page Object Model used for clean separation of concerns
-* `BaseTest` handles browser setup and teardown
-* Reusable utilities implemented in `AbstractComponents` for:
-
-  * explicit waits
-  * synchronization
-  * element presence validation
-* DataProvider-driven execution using JSON test data
+* Page Object Model for clean separation of concerns  
+* Object Library for centralized locator management  
+* TestNG Groups for logical test categorization  
+* `BaseTest` for browser setup and teardown  
+* `AbstractComponents` for reusable utilities:  
+  * explicit waits  
+  * synchronization  
+  * element validation  
+* DataProvider-driven execution using JSON  
 
 ---
 
 ## ▶️ How to Run the Tests
 
-Run using IDE:
+Using IDE:
 
-* Execute `E2E_Test.java`
+* Run any TestNG XML file:
+  * `testng-smoke.xml`
+  * `testng-regression-core.xml`
+  * `testng-regression-filter.xml`
+  * `testng-regression-error.xml`
 
-OR
+Using Maven:
 
-* Run the suite using `testng.xml`
+mvn test
 
-Browser configuration can be updated in `GlobalData.properties`.
+
+Execution behavior is controlled by TestNG suite files and group definitions.
 
 ---
 
 ## 🌟 Project Highlights
 
-* JSON-driven source, destination, date, and journey class selection
-* Clean and maintainable Page Object Model structure
-* Custom and explicit waits for stable execution
-* Auto-suggestion handling for dynamic UI elements
-* Graceful error handling when application fails
-* Scalable framework ready for extension
-
-Suggestions and improvements are always welcome.
+* TestNG group-based test categorization  
+* Modular suite-based execution  
+* Object Library for maintainable locators  
+* JSON-driven test data handling  
+* Stable execution using explicit waits  
+* Dynamic UI and auto-suggestion handling  
+* Graceful error and negative flow validation  
+* Scalable automation framework design  
 
 ---
 
 ## 💡 Key Automation Concepts Used
 
-* Explicit waits using `ExpectedConditions`
-* Fresh element fetching after DOM refresh
-* Clear separation of test logic and page logic
-* Reusable methods and utility classes
-* Configuration-driven execution
+* TestNG Groups and Suite management  
+* Explicit waits using `ExpectedConditions`  
+* Fresh element handling after DOM updates  
+* Separation of test logic, page logic, and locators  
+* Reusable base and utility components  
 
 ---
 
 ## 👩‍💻 Author
 
-**Dhwani**
-Automation / QA Engineer
-🔗 GitHub: [https://github.com/Dhwanidp](https://github.com/Dhwanidp)
+**Dhwani**  
+Automation / QA Engineer  
+🔗 GitHub: https://github.com/Dhwanidp  
 
 ---
 
 ## ⭐ Final Note
 
-This project reflects **hands-on automation experience** and understanding of **real-world testing challenges** such as synchronization, dynamic elements, and maintainable framework design.
+This project demonstrates **hands-on automation framework expertise** with real-world handling of **grouped execution**, **dynamic applications**, and **maintainable design patterns**.
 
-If you find this project helpful, feel free to ⭐ the repository!
+If you find this project useful, feel free to ⭐ the repository!
+
+
+Browser selection is controlled via `GlobalData.properties`:
+
